@@ -75,6 +75,7 @@
       this.buttonSearch = new System.Windows.Forms.Button();
       this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
       this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+      this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -148,6 +149,7 @@
       this.saveasToolStripMenuItem.Name = "saveasToolStripMenuItem";
       this.saveasToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
       this.saveasToolStripMenuItem.Text = "Enregistrer &sous";
+      this.saveasToolStripMenuItem.Click += new System.EventHandler(this.saveasToolStripMenuItem_Click);
       // 
       // toolStripSeparator1
       // 
@@ -429,6 +431,7 @@
       this.textBoxResult.Location = new System.Drawing.Point(15, 158);
       this.textBoxResult.Multiline = true;
       this.textBoxResult.Name = "textBoxResult";
+      this.textBoxResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
       this.textBoxResult.Size = new System.Drawing.Size(866, 349);
       this.textBoxResult.TabIndex = 7;
       // 
@@ -535,5 +538,6 @@
     private System.Windows.Forms.Button buttonSearch;
     private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     private System.Windows.Forms.OpenFileDialog openFileDialog1;
+    private System.Windows.Forms.SaveFileDialog saveFileDialog1;
   }
 }

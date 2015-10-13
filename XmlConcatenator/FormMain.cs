@@ -426,7 +426,7 @@ namespace XmlConcatenator
           LargeToolStripMenuItem.Text = _languageDicoFr["Large"];
           buttonSearch.Text = _languageDicoFr["Search"];
           labelDirectory.Text = _languageDicoFr["Directory"];
-          labelFileName.Text =_languageDicoFr["File"];
+          labelFileName.Text = _languageDicoFr["File"];
 
           _currentLanguage = "French";
           break;
@@ -640,14 +640,6 @@ namespace XmlConcatenator
       textBoxResult.Text = string.Empty;
     }
 
-    private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      if (textBoxResult.Text != string.Empty)
-      {
-        // TODO save file with xml format
-      }
-    }
-    
     private void buttonPeekDirectory_Click(object sender, EventArgs e)
     {
       if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
@@ -716,7 +708,7 @@ namespace XmlConcatenator
       foreach (var file in Directory.EnumerateFiles(textBoxDirectoryName.Text, "*.xml", SearchOption.AllDirectories))
       {
         Application.DoEvents();
-        if (string.Equals(file, textBoxFileName.Text, StringComparison.CurrentCultureIgnoreCase))
+        if (string.Equals(Path.GetFileName(file), textBoxFileName.Text, StringComparison.CurrentCultureIgnoreCase))
         {
           XDocument xDoc = XDocument.Load(file);
           var result = from node in xDoc.Descendants("term")
@@ -745,7 +737,6 @@ namespace XmlConcatenator
         }
       }
 
-      //DisplayMessage(Translate("The search is over"), Translate("Search over"), MessageBoxButtons.OK);
       textBoxResult.Text = "<?xml version=\"1.0\" encoding=\"utf - 8\" ?>" + Punctuation.CrLf;
       textBoxResult.Text += "<terms>" + Punctuation.CrLf;
       foreach (Tuple<string, string, string> sentenceTuple in listOfTranslatedTermsInFile)
@@ -754,6 +745,7 @@ namespace XmlConcatenator
       }
 
       textBoxResult.Text += "</terms>" + Punctuation.CrLf;
+      DisplayMessage(Translate("The search is over"), Translate("Search over"), MessageBoxButtons.OK);
     }
 
     private static string CreateTranslateTerm(Tuple<string, string, string> word)
@@ -776,6 +768,25 @@ namespace XmlConcatenator
       result.Append("</term>");
       result.Append(Punctuation.CrLf);
       return result.ToString();
+    }
+
+    private void saveasToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      if (textBoxResult.Text != string.Empty)
+      {
+        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+        {
+          saveFileDialog1.OverwritePrompt = true;
+          StreamWriter sw = new StreamWriter(saveFileDialog1.FileName);
+          sw.Write(textBoxResult.Text);
+          sw.Close();
+        }
+      }
+    }
+
+    private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      saveasToolStripMenuItem_Click(sender, e);
     }
   }
 }
