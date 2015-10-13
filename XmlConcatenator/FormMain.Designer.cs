@@ -376,7 +376,7 @@
       // buttonPeekDirectory
       // 
       this.buttonPeekDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonPeekDirectory.Location = new System.Drawing.Point(616, 68);
+      this.buttonPeekDirectory.Location = new System.Drawing.Point(628, 68);
       this.buttonPeekDirectory.Name = "buttonPeekDirectory";
       this.buttonPeekDirectory.Size = new System.Drawing.Size(40, 23);
       this.buttonPeekDirectory.TabIndex = 2;
@@ -435,7 +435,7 @@
       // buttonPeekFileName
       // 
       this.buttonPeekFileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonPeekFileName.Location = new System.Drawing.Point(616, 117);
+      this.buttonPeekFileName.Location = new System.Drawing.Point(628, 117);
       this.buttonPeekFileName.Name = "buttonPeekFileName";
       this.buttonPeekFileName.Size = new System.Drawing.Size(40, 23);
       this.buttonPeekFileName.TabIndex = 8;

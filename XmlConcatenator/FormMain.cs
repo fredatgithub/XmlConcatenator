@@ -629,9 +629,10 @@ namespace XmlConcatenator
       }
     }
 
-    private static void AdjustAllControls()
+    private void AdjustAllControls()
     {
-      AdjustControls();
+      AdjustControls(labelDirectory, textBoxDirectoryName, buttonPeekDirectory);
+      AdjustControls(labelFileName, textBoxFileName, buttonPeekFileName);
     }
 
     private void newToolStripMenuItem_Click(object sender, EventArgs e)
