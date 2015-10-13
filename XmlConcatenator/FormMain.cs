@@ -652,8 +652,6 @@ namespace XmlConcatenator
     {
       openFileDialog1.Multiselect = false;
       openFileDialog1.Filter = Translate("Xml Files") + CreateFilterString("xml");
-      // sample:
-      //"solution files (*.sln)|*.sln|Projects files (*.csproj)|*.csproj";
       openFileDialog1.FilterIndex = 1;
       openFileDialog1.FileName = string.Empty;
       if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -664,8 +662,6 @@ namespace XmlConcatenator
 
     private static string CreateFilterString(string extension)
     {
-      // sample:
-      //"solution files (*.sln)|*.sln|Projects files (*.csproj)|*.csproj";
       var result = new StringBuilder();
       result.Append(Punctuation.OneSpace);
       result.Append(Punctuation.OpenParenthesis);
@@ -774,10 +770,11 @@ namespace XmlConcatenator
     {
       if (textBoxResult.Text != string.Empty)
       {
+        saveFileDialog1.OverwritePrompt = true;
+        saveFileDialog1.Filter = Translate("Xml Files") + CreateFilterString("xml");
         if (saveFileDialog1.ShowDialog() == DialogResult.OK)
         {
-          saveFileDialog1.OverwritePrompt = true;
-          StreamWriter sw = new StreamWriter(saveFileDialog1.FileName);
+          var sw = new StreamWriter(saveFileDialog1.FileName);
           sw.Write(textBoxResult.Text);
           sw.Close();
         }
