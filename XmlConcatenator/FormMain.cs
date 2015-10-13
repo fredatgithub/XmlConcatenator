@@ -438,7 +438,10 @@ namespace XmlConcatenator
 
     private void cutToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control>
+      {
+        textBoxDirectoryName, textBoxFileName, textBoxResult
+      }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -448,7 +451,10 @@ namespace XmlConcatenator
 
     private void copyToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control>
+      {
+        textBoxDirectoryName, textBoxFileName, textBoxResult
+      }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -458,7 +464,10 @@ namespace XmlConcatenator
 
     private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control>
+      {
+        textBoxDirectoryName, textBoxFileName, textBoxResult
+      }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -468,7 +477,10 @@ namespace XmlConcatenator
 
     private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control>
+      {
+        textBoxDirectoryName, textBoxFileName, textBoxResult
+      }); 
       TextBox control = focusedControl as TextBox;
       control?.SelectAll();
     }
