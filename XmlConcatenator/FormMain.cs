@@ -696,6 +696,13 @@ namespace XmlConcatenator
         return;
       }
 
+      if (!Directory.Exists(textBoxDirectoryName.Text))
+      {
+        DisplayMessage(Translate("The directory doesn't exist"),
+          Translate("Not a Directory"), MessageBoxButtons.OK);
+        return;
+      }
+
       if (textBoxFileName.Text == string.Empty)
       {
         DisplayMessage(Translate("The xml file name cannot be empty"),
@@ -704,7 +711,70 @@ namespace XmlConcatenator
       }
 
       textBoxResult.Text = string.Empty;
+      var listOfTranslatedTermsInFile = new List<Tuple<string, string, string>>();
+      foreach (var file in Directory.EnumerateFiles(textBoxDirectoryName.Text, "*.xml", SearchOption.AllDirectories))
+      {
+        Application.DoEvents();
+        if (string.Equals(file, textBoxFileName.Text, StringComparison.CurrentCultureIgnoreCase))
+        {
+          XDocument xDoc = XDocument.Load(file);
+          var result = from node in xDoc.Descendants("term")
+                       where node.HasElements
+                       let xElementName = node.Element("name")
+                       where xElementName != null
+                       let xElementEnglish = node.Element("englishValue")
+                       where xElementEnglish != null
+                       let xElementFrench = node.Element("frenchValue")
+                       where xElementFrench != null
+                       select new
+                       {
+                         name = xElementName.Value,
+                         englishValue = xElementEnglish.Value,
+                         frenchValue = xElementFrench.Value
+                       };
+          foreach (var word in result)
+          {
+            if (!listOfTranslatedTermsInFile.Contains(new Tuple<string, string, string>(
+              word.name, word.englishValue, word.frenchValue)))
+            {
+              listOfTranslatedTermsInFile.Add(new Tuple<string, string, string>(word.name,
+              word.englishValue, word.frenchValue));
+            }
+          }
+        }
+      }
 
+      //DisplayMessage(Translate("The search is over"), Translate("Search over"), MessageBoxButtons.OK);
+      textBoxResult.Text = "<?xml version=\"1.0\" encoding=\"utf - 8\" ?>" + Punctuation.CrLf;
+      textBoxResult.Text += "<terms>" + Punctuation.CrLf;
+      foreach (Tuple<string, string, string> sentenceTuple in listOfTranslatedTermsInFile)
+      {
+        textBoxResult.Text += CreateTranslateTerm(sentenceTuple);
+      }
+
+      textBoxResult.Text += "</terms>" + Punctuation.CrLf;
+    }
+
+    private static string CreateTranslateTerm(Tuple<string, string, string> word)
+    {
+      var result = new StringBuilder();
+      result.Append("<term>");
+      result.Append(Punctuation.CrLf);
+      result.Append("<name>");
+      result.Append(word.Item1);
+      result.Append("</name>");
+      result.Append(Punctuation.CrLf);
+      result.Append("<englishValue>");
+      result.Append(word.Item2);
+      result.Append("</englishValue>");
+      result.Append(Punctuation.CrLf);
+      result.Append("<frenchValue>");
+      result.Append(word.Item3);
+      result.Append("</frenchValue>");
+      result.Append(Punctuation.CrLf);
+      result.Append("</term>");
+      result.Append(Punctuation.CrLf);
+      return result.ToString();
     }
   }
 }

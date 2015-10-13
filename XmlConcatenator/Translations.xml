@@ -211,26 +211,26 @@
       <englishValue>Empty File Name</englishValue>
       <frenchValue>Nom de fichier vide</frenchValue>
     </term>
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
+    <term>
+      <name>The directory doesn't exist</name>
+      <englishValue>The directory doesn't exist</englishValue>
+      <frenchValue>Le répertoire n'existe pas</frenchValue>
+    </term>
+    <term>
+      <name>Not a Directory</name>
+      <englishValue>Not a Directory</englishValue>
+      <frenchValue>Faux répertoire</frenchValue>
+    </term>
+    <term>
+      <name>The search is over</name>
+      <englishValue>The search is over</englishValue>
+      <frenchValue>La recherche est terminée</frenchValue>
+    </term>
+    <term>
+      <name>Search over</name>
+      <englishValue>Search over</englishValue>
+      <frenchValue>Recherche finie</frenchValue>
+    </term>
     <!--<term>
       <name></name>
       <englishValue></englishValue>
