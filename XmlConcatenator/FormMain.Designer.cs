@@ -65,13 +65,16 @@
       this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.button1 = new System.Windows.Forms.Button();
-      this.label1 = new System.Windows.Forms.Label();
-      this.textBox1 = new System.Windows.Forms.TextBox();
-      this.textBox2 = new System.Windows.Forms.TextBox();
-      this.label2 = new System.Windows.Forms.Label();
-      this.textBox3 = new System.Windows.Forms.TextBox();
-      this.button2 = new System.Windows.Forms.Button();
+      this.buttonPeekDirectory = new System.Windows.Forms.Button();
+      this.labelDirectory = new System.Windows.Forms.Label();
+      this.textBoxDirectoryName = new System.Windows.Forms.TextBox();
+      this.textBoxFileName = new System.Windows.Forms.TextBox();
+      this.labelFileName = new System.Windows.Forms.Label();
+      this.textBoxResult = new System.Windows.Forms.TextBox();
+      this.buttonPeekFileName = new System.Windows.Forms.Button();
+      this.buttonSearch = new System.Windows.Forms.Button();
+      this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+      this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -116,6 +119,7 @@
       this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
       this.newToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
       this.newToolStripMenuItem.Text = "&Nouveau";
+      this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
       // 
       // openToolStripMenuItem
       // 
@@ -137,6 +141,7 @@
       this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
       this.saveToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
       this.saveToolStripMenuItem.Text = "&Enregistrer";
+      this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
       // 
       // saveasToolStripMenuItem
       // 
@@ -368,84 +373,109 @@
       this.aboutToolStripMenuItem.Text = "À &propos de...";
       this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
       // 
-      // button1
+      // buttonPeekDirectory
       // 
-      this.button1.Location = new System.Drawing.Point(616, 68);
-      this.button1.Name = "button1";
-      this.button1.Size = new System.Drawing.Size(40, 23);
-      this.button1.TabIndex = 2;
-      this.button1.Text = "...";
-      this.button1.UseVisualStyleBackColor = true;
+      this.buttonPeekDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.buttonPeekDirectory.Location = new System.Drawing.Point(616, 68);
+      this.buttonPeekDirectory.Name = "buttonPeekDirectory";
+      this.buttonPeekDirectory.Size = new System.Drawing.Size(40, 23);
+      this.buttonPeekDirectory.TabIndex = 2;
+      this.buttonPeekDirectory.Text = "...";
+      this.buttonPeekDirectory.UseVisualStyleBackColor = true;
+      this.buttonPeekDirectory.Click += new System.EventHandler(this.buttonPeekDirectory_Click);
       // 
-      // label1
+      // labelDirectory
       // 
-      this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(12, 68);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(46, 17);
-      this.label1.TabIndex = 3;
-      this.label1.Text = "label1";
+      this.labelDirectory.AutoSize = true;
+      this.labelDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelDirectory.Location = new System.Drawing.Point(12, 68);
+      this.labelDirectory.Name = "labelDirectory";
+      this.labelDirectory.Size = new System.Drawing.Size(78, 20);
+      this.labelDirectory.TabIndex = 3;
+      this.labelDirectory.Text = "Directory";
       // 
-      // textBox1
+      // textBoxDirectoryName
       // 
-      this.textBox1.Location = new System.Drawing.Point(89, 68);
-      this.textBox1.Name = "textBox1";
-      this.textBox1.Size = new System.Drawing.Size(505, 22);
-      this.textBox1.TabIndex = 4;
+      this.textBoxDirectoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBoxDirectoryName.Location = new System.Drawing.Point(100, 68);
+      this.textBoxDirectoryName.Name = "textBoxDirectoryName";
+      this.textBoxDirectoryName.Size = new System.Drawing.Size(505, 26);
+      this.textBoxDirectoryName.TabIndex = 4;
       // 
-      // textBox2
+      // textBoxFileName
       // 
-      this.textBox2.Location = new System.Drawing.Point(89, 118);
-      this.textBox2.Name = "textBox2";
-      this.textBox2.Size = new System.Drawing.Size(505, 22);
-      this.textBox2.TabIndex = 6;
+      this.textBoxFileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBoxFileName.Location = new System.Drawing.Point(100, 118);
+      this.textBoxFileName.Name = "textBoxFileName";
+      this.textBoxFileName.Size = new System.Drawing.Size(505, 26);
+      this.textBoxFileName.TabIndex = 6;
       // 
-      // label2
+      // labelFileName
       // 
-      this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(12, 118);
-      this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(46, 17);
-      this.label2.TabIndex = 5;
-      this.label2.Text = "label2";
+      this.labelFileName.AutoSize = true;
+      this.labelFileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelFileName.Location = new System.Drawing.Point(12, 118);
+      this.labelFileName.Name = "labelFileName";
+      this.labelFileName.Size = new System.Drawing.Size(36, 20);
+      this.labelFileName.TabIndex = 5;
+      this.labelFileName.Text = "File";
       // 
-      // textBox3
+      // textBoxResult
       // 
-      this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.textBoxResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.textBox3.Location = new System.Drawing.Point(15, 158);
-      this.textBox3.Multiline = true;
-      this.textBox3.Name = "textBox3";
-      this.textBox3.Size = new System.Drawing.Size(866, 349);
-      this.textBox3.TabIndex = 7;
+      this.textBoxResult.Location = new System.Drawing.Point(15, 158);
+      this.textBoxResult.Multiline = true;
+      this.textBoxResult.Name = "textBoxResult";
+      this.textBoxResult.Size = new System.Drawing.Size(866, 349);
+      this.textBoxResult.TabIndex = 7;
       // 
-      // button2
+      // buttonPeekFileName
       // 
-      this.button2.Location = new System.Drawing.Point(616, 117);
-      this.button2.Name = "button2";
-      this.button2.Size = new System.Drawing.Size(40, 23);
-      this.button2.TabIndex = 8;
-      this.button2.Text = "...";
-      this.button2.UseVisualStyleBackColor = true;
+      this.buttonPeekFileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.buttonPeekFileName.Location = new System.Drawing.Point(616, 117);
+      this.buttonPeekFileName.Name = "buttonPeekFileName";
+      this.buttonPeekFileName.Size = new System.Drawing.Size(40, 23);
+      this.buttonPeekFileName.TabIndex = 8;
+      this.buttonPeekFileName.Text = "...";
+      this.buttonPeekFileName.UseVisualStyleBackColor = true;
+      this.buttonPeekFileName.Click += new System.EventHandler(this.buttonPeekFileName_Click);
+      // 
+      // buttonSearch
+      // 
+      this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.buttonSearch.Location = new System.Drawing.Point(704, 107);
+      this.buttonSearch.Name = "buttonSearch";
+      this.buttonSearch.Size = new System.Drawing.Size(119, 34);
+      this.buttonSearch.TabIndex = 9;
+      this.buttonSearch.Text = "Search";
+      this.buttonSearch.UseVisualStyleBackColor = true;
+      this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+      // 
+      // openFileDialog1
+      // 
+      this.openFileDialog1.FileName = "openFileDialog1";
       // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(911, 534);
-      this.Controls.Add(this.button2);
-      this.Controls.Add(this.textBox3);
-      this.Controls.Add(this.textBox2);
-      this.Controls.Add(this.label2);
-      this.Controls.Add(this.textBox1);
-      this.Controls.Add(this.label1);
-      this.Controls.Add(this.button1);
+      this.Controls.Add(this.buttonSearch);
+      this.Controls.Add(this.buttonPeekFileName);
+      this.Controls.Add(this.textBoxResult);
+      this.Controls.Add(this.textBoxFileName);
+      this.Controls.Add(this.labelFileName);
+      this.Controls.Add(this.textBoxDirectoryName);
+      this.Controls.Add(this.labelDirectory);
+      this.Controls.Add(this.buttonPeekDirectory);
       this.Controls.Add(this.menuStrip1);
       this.MainMenuStrip = this.menuStrip1;
       this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.Name = "FormMain";
       this.ShowIcon = false;
+      this.Text = "XML Concatenator";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMainFormClosing);
       this.Load += new System.EventHandler(this.FormMain_Load);
       this.menuStrip1.ResumeLayout(false);
@@ -494,12 +524,15 @@
     private System.Windows.Forms.ToolStripMenuItem SmallToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem MediumToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem LargeToolStripMenuItem;
-    private System.Windows.Forms.Button button1;
-    private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.TextBox textBox1;
-    private System.Windows.Forms.TextBox textBox2;
-    private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.TextBox textBox3;
-    private System.Windows.Forms.Button button2;
+    private System.Windows.Forms.Button buttonPeekDirectory;
+    private System.Windows.Forms.Label labelDirectory;
+    private System.Windows.Forms.TextBox textBoxDirectoryName;
+    private System.Windows.Forms.TextBox textBoxFileName;
+    private System.Windows.Forms.Label labelFileName;
+    private System.Windows.Forms.TextBox textBoxResult;
+    private System.Windows.Forms.Button buttonPeekFileName;
+    private System.Windows.Forms.Button buttonSearch;
+    private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+    private System.Windows.Forms.OpenFileDialog openFileDialog1;
   }
 }

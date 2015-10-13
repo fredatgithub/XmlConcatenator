@@ -23,6 +23,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using XmlConcatenator.Properties;
@@ -261,6 +262,8 @@ namespace XmlConcatenator
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
+      textBoxFileName.Text = Settings.Default.textBoxFileName;
+      textBoxDirectoryName.Text = Settings.Default.textBoxDirectoryName;
     }
 
     private void SaveWindowValue()
@@ -271,6 +274,8 @@ namespace XmlConcatenator
       Settings.Default.WindowTop = Top;
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
+      Settings.Default.textBoxFileName = textBoxFileName.Text;
+      Settings.Default.textBoxDirectoryName = textBoxDirectoryName.Text;
       Settings.Default.Save();
     }
 
@@ -380,6 +385,9 @@ namespace XmlConcatenator
           SmallToolStripMenuItem.Text = _languageDicoEn["Small"];
           MediumToolStripMenuItem.Text = _languageDicoEn["Medium"];
           LargeToolStripMenuItem.Text = _languageDicoEn["Large"];
+          buttonSearch.Text = _languageDicoEn["Search"];
+          labelDirectory.Text = _languageDicoEn["Directory"];
+          labelFileName.Text = _languageDicoEn["File"];
 
           _currentLanguage = "English";
           break;
@@ -416,6 +424,9 @@ namespace XmlConcatenator
           SmallToolStripMenuItem.Text = _languageDicoFr["Small"];
           MediumToolStripMenuItem.Text = _languageDicoFr["Medium"];
           LargeToolStripMenuItem.Text = _languageDicoFr["Large"];
+          buttonSearch.Text = _languageDicoFr["Search"];
+          labelDirectory.Text = _languageDicoFr["Directory"];
+          labelFileName.Text =_languageDicoFr["File"];
 
           _currentLanguage = "French";
           break;
@@ -618,9 +629,82 @@ namespace XmlConcatenator
       }
     }
 
-    private void AdjustAllControls()
+    private static void AdjustAllControls()
     {
       AdjustControls();
+    }
+
+    private void newToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      textBoxResult.Text = string.Empty;
+    }
+
+    private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      if (textBoxResult.Text != string.Empty)
+      {
+        // TODO save file with xml format
+      }
+    }
+    
+    private void buttonPeekDirectory_Click(object sender, EventArgs e)
+    {
+      if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+      {
+        textBoxDirectoryName.Text = folderBrowserDialog1.SelectedPath;
+      }
+    }
+
+    private void buttonPeekFileName_Click(object sender, EventArgs e)
+    {
+      openFileDialog1.Multiselect = false;
+      openFileDialog1.Filter = Translate("Xml Files") + CreateFilterString("xml");
+      // sample:
+      //"solution files (*.sln)|*.sln|Projects files (*.csproj)|*.csproj";
+      openFileDialog1.FilterIndex = 1;
+      openFileDialog1.FileName = string.Empty;
+      if (openFileDialog1.ShowDialog() == DialogResult.OK)
+      {
+        textBoxFileName.Text = openFileDialog1.SafeFileName;
+      }
+    }
+
+    private static string CreateFilterString(string extension)
+    {
+      // sample:
+      //"solution files (*.sln)|*.sln|Projects files (*.csproj)|*.csproj";
+      var result = new StringBuilder();
+      result.Append(Punctuation.OneSpace);
+      result.Append(Punctuation.OpenParenthesis);
+      result.Append(Punctuation.Multiply);
+      result.Append(Punctuation.Period);
+      result.Append(extension);
+      result.Append(Punctuation.CloseParenthesis);
+      result.Append(Punctuation.Pipe);
+      result.Append(Punctuation.Multiply);
+      result.Append(Punctuation.Period);
+      result.Append(extension);
+      return result.ToString();
+    }
+
+    private void buttonSearch_Click(object sender, EventArgs e)
+    {
+      if (textBoxDirectoryName.Text == string.Empty)
+      {
+        DisplayMessage(Translate("The start directory cannot be empty"),
+          Translate("Empty Directory"), MessageBoxButtons.OK);
+        return;
+      }
+
+      if (textBoxFileName.Text == string.Empty)
+      {
+        DisplayMessage(Translate("The xml file name cannot be empty"),
+          Translate("Empty File Name"), MessageBoxButtons.OK);
+        return;
+      }
+
+      textBoxResult.Text = string.Empty;
+
     }
   }
 }

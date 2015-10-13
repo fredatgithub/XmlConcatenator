@@ -23,5 +23,11 @@
     <Setting Name="DisplayToolStripMenuItem" Type="System.String" Scope="User">
       <Value Profile="(Default)">Large</Value>
     </Setting>
+    <Setting Name="textBoxDirectoryName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="textBoxFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
