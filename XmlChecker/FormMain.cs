@@ -82,6 +82,7 @@ namespace XmlChecker
 
       // read the translation file and feed the language
       XDocument xDoc = XDocument.Load(Settings.Default.LanguageFileName);
+      var toto = "";
       var result = from node in xDoc.Descendants("term")
                    where node.HasElements
                    let xElementName = node.Element("name")
@@ -642,11 +643,13 @@ namespace XmlChecker
 
     private void buttonPeekFileName_Click(object sender, EventArgs e)
     {
-      OpenFileDialog openFileDialog1 = new OpenFileDialog();
-      openFileDialog1.Multiselect = false;
-      openFileDialog1.Filter = Translate("Xml Files") + CreateFilterString("xml");
-      openFileDialog1.FilterIndex = 1;
-      openFileDialog1.FileName = string.Empty;
+      OpenFileDialog openFileDialog1 = new OpenFileDialog
+      {
+        Multiselect = false,
+        Filter = Translate("Xml Files") + CreateFilterString("xml"),
+        FilterIndex = 1,
+        FileName = string.Empty
+      };
       if (openFileDialog1.ShowDialog() == DialogResult.OK)
       {
         textBoxFileName.Text = openFileDialog1.FileName;
