@@ -108,10 +108,6 @@ namespace XmlChecker
       List<string> minimumVersion = new List<string>
       {
         "<?xml version=\"1.0\" encoding=\"utf - 8\" ?>",
-        "<Document>",
-        "<DocumentVersion>",
-        "<version> 1.0 </version>",
-        "</DocumentVersion>",
         "<terms>",
          "<term>",
         "<name>MenuFile</name>",
@@ -243,8 +239,7 @@ namespace XmlChecker
           "<englishValue>About</englishValue>",
           "<frenchValue>A propos de ...</frenchValue>",
         "</term>",
-        "</terms>",
-        "</Document>"
+        "</terms>"
       };
       StreamWriter sw = new StreamWriter(Settings.Default.LanguageFileName);
       foreach (string item in minimumVersion)
@@ -262,6 +257,7 @@ namespace XmlChecker
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
+      textBoxSearchWord.Text = Settings.Default.textBoxSearchWord;
     }
 
     private void SaveWindowValue()
@@ -272,6 +268,7 @@ namespace XmlChecker
       Settings.Default.WindowTop = Top;
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
+      Settings.Default.textBoxSearchWord = textBoxSearchWord.Text;
       Settings.Default.Save();
     }
 
@@ -381,7 +378,10 @@ namespace XmlChecker
           SmallToolStripMenuItem.Text = _languageDicoEn["Small"];
           MediumToolStripMenuItem.Text = _languageDicoEn["Medium"];
           LargeToolStripMenuItem.Text = _languageDicoEn["Large"];
-
+          labelFileName.Text = _languageDicoEn["XML File"];
+          labelSearchWord.Text = _languageDicoEn["Word"];
+          buttonCheck.Text = _languageDicoEn["Check"];
+          buttonSearchWord.Text = _languageDicoEn["Search"];
           _currentLanguage = "English";
           break;
         case "French":
@@ -417,7 +417,10 @@ namespace XmlChecker
           SmallToolStripMenuItem.Text = _languageDicoFr["Small"];
           MediumToolStripMenuItem.Text = _languageDicoFr["Medium"];
           LargeToolStripMenuItem.Text = _languageDicoFr["Large"];
-
+          labelFileName.Text = _languageDicoFr["XML File"];
+          labelSearchWord.Text = _languageDicoFr["Word"];
+          buttonCheck.Text = _languageDicoFr["Check"];
+          buttonSearchWord.Text = _languageDicoFr["Search"];
           _currentLanguage = "French";
           break;
         default:
@@ -428,7 +431,10 @@ namespace XmlChecker
 
     private void cutToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control>
+      {
+        textBoxFileName, textBoxSearchWord, textBoxResult
+      }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -438,7 +444,10 @@ namespace XmlChecker
 
     private void copyToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control>
+      {
+        textBoxFileName, textBoxSearchWord, textBoxResult
+      }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -448,7 +457,10 @@ namespace XmlChecker
 
     private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control>
+      {
+        textBoxFileName, textBoxSearchWord, textBoxResult
+      }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -458,7 +470,10 @@ namespace XmlChecker
 
     private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control>
+      {
+        textBoxFileName, textBoxSearchWord, textBoxResult
+      }); 
       TextBox control = focusedControl as TextBox;
       control?.SelectAll();
     }
@@ -619,9 +634,10 @@ namespace XmlChecker
       }
     }
 
-    private static void AdjustAllControls()
+    private void AdjustAllControls()
     {
-      AdjustControls();
+      AdjustControls(labelFileName, textBoxFileName, buttonPeekFileName, buttonCheck);
+      AdjustControls(labelSearchWord, textBoxSearchWord, buttonSearchWord);
     }
 
     private void buttonPeekFileName_Click(object sender, EventArgs e)
@@ -633,7 +649,7 @@ namespace XmlChecker
       openFileDialog1.FileName = string.Empty;
       if (openFileDialog1.ShowDialog() == DialogResult.OK)
       {
-        textBoxFileName.Text = openFileDialog1.SafeFileName;
+        textBoxFileName.Text = openFileDialog1.FileName;
       }
     }
 
@@ -651,6 +667,16 @@ namespace XmlChecker
       result.Append(Punctuation.Period);
       result.Append(extension);
       return result.ToString();
+    }
+
+    private void buttonCheck_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void buttonSearchWord_Click(object sender, EventArgs e)
+    {
+
     }
   }
 }

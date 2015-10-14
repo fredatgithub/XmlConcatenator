@@ -23,5 +23,8 @@
     <Setting Name="DisplayToolStripMenuItem" Type="System.String" Scope="User">
       <Value Profile="(Default)">Large</Value>
     </Setting>
+    <Setting Name="textBoxSearchWord" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

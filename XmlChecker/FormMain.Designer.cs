@@ -70,6 +70,9 @@
       this.labelFileName = new System.Windows.Forms.Label();
       this.buttonCheck = new System.Windows.Forms.Button();
       this.textBoxResult = new System.Windows.Forms.TextBox();
+      this.buttonSearchWord = new System.Windows.Forms.Button();
+      this.textBoxSearchWord = new System.Windows.Forms.TextBox();
+      this.labelSearchWord = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -86,7 +89,7 @@
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
       this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-      this.menuStrip1.Size = new System.Drawing.Size(911, 28);
+      this.menuStrip1.Size = new System.Drawing.Size(1163, 28);
       this.menuStrip1.TabIndex = 1;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -279,8 +282,10 @@
       // 
       // frenchToolStripMenuItem
       // 
+      this.frenchToolStripMenuItem.Checked = true;
+      this.frenchToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
       this.frenchToolStripMenuItem.Name = "frenchToolStripMenuItem";
-      this.frenchToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
+      this.frenchToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
       this.frenchToolStripMenuItem.Text = "Français";
       this.frenchToolStripMenuItem.Click += new System.EventHandler(this.frenchToolStripMenuItem_Click);
       // 
@@ -369,7 +374,7 @@
       // buttonPeekFileName
       // 
       this.buttonPeekFileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonPeekFileName.Location = new System.Drawing.Point(647, 72);
+      this.buttonPeekFileName.Location = new System.Drawing.Point(826, 66);
       this.buttonPeekFileName.Name = "buttonPeekFileName";
       this.buttonPeekFileName.Size = new System.Drawing.Size(40, 23);
       this.buttonPeekFileName.TabIndex = 11;
@@ -379,10 +384,11 @@
       // 
       // textBoxFileName
       // 
+      this.textBoxFileName.BorderStyle = System.Windows.Forms.BorderStyle.None;
       this.textBoxFileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.textBoxFileName.Location = new System.Drawing.Point(115, 68);
       this.textBoxFileName.Name = "textBoxFileName";
-      this.textBoxFileName.Size = new System.Drawing.Size(504, 26);
+      this.textBoxFileName.Size = new System.Drawing.Size(691, 19);
       this.textBoxFileName.TabIndex = 10;
       // 
       // labelFileName
@@ -398,12 +404,13 @@
       // buttonCheck
       // 
       this.buttonCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonCheck.Location = new System.Drawing.Point(727, 66);
+      this.buttonCheck.Location = new System.Drawing.Point(906, 62);
       this.buttonCheck.Name = "buttonCheck";
       this.buttonCheck.Size = new System.Drawing.Size(119, 34);
       this.buttonCheck.TabIndex = 12;
       this.buttonCheck.Text = "Check";
       this.buttonCheck.UseVisualStyleBackColor = true;
+      this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click);
       // 
       // textBoxResult
       // 
@@ -411,18 +418,50 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.textBoxResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textBoxResult.Location = new System.Drawing.Point(22, 116);
+      this.textBoxResult.Location = new System.Drawing.Point(22, 157);
       this.textBoxResult.Multiline = true;
       this.textBoxResult.Name = "textBoxResult";
       this.textBoxResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-      this.textBoxResult.Size = new System.Drawing.Size(866, 390);
+      this.textBoxResult.Size = new System.Drawing.Size(1118, 349);
       this.textBoxResult.TabIndex = 13;
+      // 
+      // buttonSearchWord
+      // 
+      this.buttonSearchWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.buttonSearchWord.Location = new System.Drawing.Point(906, 111);
+      this.buttonSearchWord.Name = "buttonSearchWord";
+      this.buttonSearchWord.Size = new System.Drawing.Size(119, 34);
+      this.buttonSearchWord.TabIndex = 17;
+      this.buttonSearchWord.Text = "Search";
+      this.buttonSearchWord.UseVisualStyleBackColor = true;
+      this.buttonSearchWord.Click += new System.EventHandler(this.buttonSearchWord_Click);
+      // 
+      // textBoxSearchWord
+      // 
+      this.textBoxSearchWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBoxSearchWord.Location = new System.Drawing.Point(115, 113);
+      this.textBoxSearchWord.Name = "textBoxSearchWord";
+      this.textBoxSearchWord.Size = new System.Drawing.Size(691, 26);
+      this.textBoxSearchWord.TabIndex = 15;
+      // 
+      // labelSearchWord
+      // 
+      this.labelSearchWord.AutoSize = true;
+      this.labelSearchWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelSearchWord.Location = new System.Drawing.Point(18, 113);
+      this.labelSearchWord.Name = "labelSearchWord";
+      this.labelSearchWord.Size = new System.Drawing.Size(49, 20);
+      this.labelSearchWord.TabIndex = 14;
+      this.labelSearchWord.Text = "Word";
       // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(911, 534);
+      this.ClientSize = new System.Drawing.Size(1163, 534);
+      this.Controls.Add(this.buttonSearchWord);
+      this.Controls.Add(this.textBoxSearchWord);
+      this.Controls.Add(this.labelSearchWord);
       this.Controls.Add(this.textBoxResult);
       this.Controls.Add(this.buttonCheck);
       this.Controls.Add(this.buttonPeekFileName);
@@ -433,6 +472,7 @@
       this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.Name = "FormMain";
       this.ShowIcon = false;
+      this.Text = "XML Concatenator and XML checker";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMainFormClosing);
       this.Load += new System.EventHandler(this.FormMain_Load);
       this.menuStrip1.ResumeLayout(false);
@@ -486,5 +526,8 @@
     private System.Windows.Forms.Label labelFileName;
     private System.Windows.Forms.Button buttonCheck;
     private System.Windows.Forms.TextBox textBoxResult;
+    private System.Windows.Forms.Button buttonSearchWord;
+    private System.Windows.Forms.TextBox textBoxSearchWord;
+    private System.Windows.Forms.Label labelSearchWord;
   }
 }
