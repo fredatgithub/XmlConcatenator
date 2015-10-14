@@ -439,7 +439,7 @@ namespace XmlConcatenator
     {
       Control focusedControl = FindFocusedControl(new List<Control>
       {
-        textBoxDirectoryName, textBoxFileName, textBoxResult
+        textBoxDirectoryName, textBoxFileName, textBoxResult, textBoxLastFileProcessed
       }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
@@ -452,7 +452,7 @@ namespace XmlConcatenator
     {
       Control focusedControl = FindFocusedControl(new List<Control>
       {
-        textBoxDirectoryName, textBoxFileName, textBoxResult
+        textBoxDirectoryName, textBoxFileName, textBoxResult, textBoxLastFileProcessed
       }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
@@ -465,7 +465,7 @@ namespace XmlConcatenator
     {
       Control focusedControl = FindFocusedControl(new List<Control>
       {
-        textBoxDirectoryName, textBoxFileName, textBoxResult
+        textBoxDirectoryName, textBoxFileName, textBoxResult, textBoxLastFileProcessed
       }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
@@ -478,7 +478,7 @@ namespace XmlConcatenator
     {
       Control focusedControl = FindFocusedControl(new List<Control>
       {
-        textBoxDirectoryName, textBoxFileName, textBoxResult
+        textBoxDirectoryName, textBoxFileName, textBoxResult, textBoxLastFileProcessed
       }); 
       TextBox control = focusedControl as TextBox;
       control?.SelectAll();
