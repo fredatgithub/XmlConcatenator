@@ -712,9 +712,16 @@ namespace XmlConcatenator
       }
 
       textBoxResult.Text = string.Empty;
+      progressBarMain.Visible = true;
+      progressBarMain.Minimum = 0;
+      progressBarMain.Value = progressBarMain.Minimum;
+      progressBarMain.Maximum =
+        Directory.EnumerateFiles(textBoxDirectoryName.Text, "*.xml", SearchOption.AllDirectories).Count();
+      int counter = 0;
       var listOfTranslatedTermsInFile = new List<Tuple<string, string, string>>();
       foreach (var file in Directory.EnumerateFiles(textBoxDirectoryName.Text, "*.xml", SearchOption.AllDirectories))
       {
+        progressBarMain.Value = ++counter;
         Application.DoEvents();
         if (string.Equals(Path.GetFileName(file), textBoxFileName.Text, StringComparison.CurrentCultureIgnoreCase))
         {
@@ -752,6 +759,8 @@ namespace XmlConcatenator
         textBoxResult.Text += CreateTranslateTerm(sentenceTuple);
       }
 
+      progressBarMain.Value = progressBarMain.Minimum;
+      progressBarMain.Visible = false;
       textBoxResult.Text += "</terms>" + Punctuation.CrLf;
       DisplayMessage(Translate("The search is over"), Translate("Search over"), MessageBoxButtons.OK);
     }

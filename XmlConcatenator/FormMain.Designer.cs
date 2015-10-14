@@ -76,6 +76,7 @@
       this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
       this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
       this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+      this.progressBarMain = new System.Windows.Forms.ProgressBar();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -461,11 +462,21 @@
       // 
       this.openFileDialog1.FileName = "openFileDialog1";
       // 
+      // progressBarMain
+      // 
+      this.progressBarMain.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.progressBarMain.Location = new System.Drawing.Point(0, 511);
+      this.progressBarMain.Name = "progressBarMain";
+      this.progressBarMain.Size = new System.Drawing.Size(911, 23);
+      this.progressBarMain.TabIndex = 10;
+      this.progressBarMain.Visible = false;
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(911, 534);
+      this.Controls.Add(this.progressBarMain);
       this.Controls.Add(this.buttonSearch);
       this.Controls.Add(this.buttonPeekFileName);
       this.Controls.Add(this.textBoxResult);
@@ -539,5 +550,6 @@
     private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     private System.Windows.Forms.OpenFileDialog openFileDialog1;
     private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+    private System.Windows.Forms.ProgressBar progressBarMain;
   }
 }
