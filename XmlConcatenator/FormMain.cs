@@ -108,10 +108,6 @@ namespace XmlConcatenator
       List<string> minimumVersion = new List<string>
       {
         "<?xml version=\"1.0\" encoding=\"utf - 8\" ?>",
-        "<Document>",
-        "<DocumentVersion>",
-        "<version> 1.0 </version>",
-        "</DocumentVersion>",
         "<terms>",
          "<term>",
         "<name>MenuFile</name>",
@@ -243,8 +239,7 @@ namespace XmlConcatenator
           "<englishValue>About</englishValue>",
           "<frenchValue>A propos de ...</frenchValue>",
         "</term>",
-        "</terms>",
-        "</Document>"
+        "</terms>"
       };
       StreamWriter sw = new StreamWriter(Settings.Default.LanguageFileName);
       foreach (string item in minimumVersion)
@@ -264,6 +259,7 @@ namespace XmlConcatenator
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
       textBoxFileName.Text = Settings.Default.textBoxFileName;
       textBoxDirectoryName.Text = Settings.Default.textBoxDirectoryName;
+      textBoxLastFileProcessed.Text = Settings.Default.textBoxLastFileProcessed;
     }
 
     private void SaveWindowValue()
@@ -276,6 +272,7 @@ namespace XmlConcatenator
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
       Settings.Default.textBoxFileName = textBoxFileName.Text;
       Settings.Default.textBoxDirectoryName = textBoxDirectoryName.Text;
+      Settings.Default.textBoxLastFileProcessed = textBoxLastFileProcessed.Text;
       Settings.Default.Save();
     }
 
@@ -388,6 +385,7 @@ namespace XmlConcatenator
           buttonSearch.Text = _languageDicoEn["Search"];
           labelDirectory.Text = _languageDicoEn["Directory"];
           labelFileName.Text = _languageDicoEn["File"];
+          labelLastFileProcessed.Text = _languageDicoEn["Last file processed"];
 
           _currentLanguage = "English";
           break;
@@ -427,6 +425,7 @@ namespace XmlConcatenator
           buttonSearch.Text = _languageDicoFr["Search"];
           labelDirectory.Text = _languageDicoFr["Directory"];
           labelFileName.Text = _languageDicoFr["File"];
+          labelLastFileProcessed.Text = _languageDicoFr["Last file processed"];
 
           _currentLanguage = "French";
           break;
@@ -635,7 +634,7 @@ namespace XmlConcatenator
         }
         else
         {
-          control.Left = position + 10;
+          control.Left = position + 15;
           position += control.Width;
         }
       }
@@ -645,6 +644,7 @@ namespace XmlConcatenator
     {
       AdjustControls(labelDirectory, textBoxDirectoryName, buttonPeekDirectory);
       AdjustControls(labelFileName, textBoxFileName, buttonPeekFileName);
+      AdjustControls(labelLastFileProcessed, textBoxLastFileProcessed);
     }
 
     private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -725,6 +725,7 @@ namespace XmlConcatenator
         Application.DoEvents();
         if (string.Equals(Path.GetFileName(file), textBoxFileName.Text, StringComparison.CurrentCultureIgnoreCase))
         {
+          textBoxLastFileProcessed.Text = file;
           XDocument xDoc = XDocument.Load(file);
           var result = from node in xDoc.Descendants("term")
                        where node.HasElements

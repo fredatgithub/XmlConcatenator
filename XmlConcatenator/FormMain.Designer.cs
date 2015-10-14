@@ -77,6 +77,8 @@
       this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
       this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
       this.progressBarMain = new System.Windows.Forms.ProgressBar();
+      this.textBoxLastFileProcessed = new System.Windows.Forms.TextBox();
+      this.labelLastFileProcessed = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -379,7 +381,7 @@
       // buttonPeekDirectory
       // 
       this.buttonPeekDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonPeekDirectory.Location = new System.Drawing.Point(628, 68);
+      this.buttonPeekDirectory.Location = new System.Drawing.Point(633, 68);
       this.buttonPeekDirectory.Name = "buttonPeekDirectory";
       this.buttonPeekDirectory.Size = new System.Drawing.Size(40, 23);
       this.buttonPeekDirectory.TabIndex = 2;
@@ -429,17 +431,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.textBoxResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textBoxResult.Location = new System.Drawing.Point(15, 158);
+      this.textBoxResult.Location = new System.Drawing.Point(15, 205);
       this.textBoxResult.Multiline = true;
       this.textBoxResult.Name = "textBoxResult";
       this.textBoxResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-      this.textBoxResult.Size = new System.Drawing.Size(866, 349);
+      this.textBoxResult.Size = new System.Drawing.Size(866, 302);
       this.textBoxResult.TabIndex = 7;
       // 
       // buttonPeekFileName
       // 
       this.buttonPeekFileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonPeekFileName.Location = new System.Drawing.Point(628, 117);
+      this.buttonPeekFileName.Location = new System.Drawing.Point(633, 117);
       this.buttonPeekFileName.Name = "buttonPeekFileName";
       this.buttonPeekFileName.Size = new System.Drawing.Size(40, 23);
       this.buttonPeekFileName.TabIndex = 8;
@@ -471,11 +473,33 @@
       this.progressBarMain.TabIndex = 10;
       this.progressBarMain.Visible = false;
       // 
+      // textBoxLastFileProcessed
+      // 
+      this.textBoxLastFileProcessed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.textBoxLastFileProcessed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBoxLastFileProcessed.Location = new System.Drawing.Point(183, 161);
+      this.textBoxLastFileProcessed.Name = "textBoxLastFileProcessed";
+      this.textBoxLastFileProcessed.Size = new System.Drawing.Size(698, 26);
+      this.textBoxLastFileProcessed.TabIndex = 12;
+      // 
+      // labelLastFileProcessed
+      // 
+      this.labelLastFileProcessed.AutoSize = true;
+      this.labelLastFileProcessed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelLastFileProcessed.Location = new System.Drawing.Point(12, 161);
+      this.labelLastFileProcessed.Name = "labelLastFileProcessed";
+      this.labelLastFileProcessed.Size = new System.Drawing.Size(152, 20);
+      this.labelLastFileProcessed.TabIndex = 11;
+      this.labelLastFileProcessed.Text = "Last file processed";
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(911, 534);
+      this.Controls.Add(this.textBoxLastFileProcessed);
+      this.Controls.Add(this.labelLastFileProcessed);
       this.Controls.Add(this.progressBarMain);
       this.Controls.Add(this.buttonSearch);
       this.Controls.Add(this.buttonPeekFileName);
@@ -551,5 +575,7 @@
     private System.Windows.Forms.OpenFileDialog openFileDialog1;
     private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     private System.Windows.Forms.ProgressBar progressBarMain;
+    private System.Windows.Forms.TextBox textBoxLastFileProcessed;
+    private System.Windows.Forms.Label labelLastFileProcessed;
   }
 }

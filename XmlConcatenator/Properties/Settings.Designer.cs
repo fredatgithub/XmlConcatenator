@@ -130,5 +130,17 @@ namespace XmlConcatenator.Properties {
                 this["textBoxFileName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxLastFileProcessed {
+            get {
+                return ((string)(this["textBoxLastFileProcessed"]));
+            }
+            set {
+                this["textBoxLastFileProcessed"] = value;
+            }
+        }
     }
 }

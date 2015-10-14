@@ -231,10 +231,10 @@
       <englishValue>Search over</englishValue>
       <frenchValue>Recherche finie</frenchValue>
     </term>
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
+    <term>
+      <name>Last file processed</name>
+      <englishValue>Last file processed</englishValue>
+      <frenchValue>Dernier fichier traité</frenchValue>
+    </term>
   </terms>
 </Document>
