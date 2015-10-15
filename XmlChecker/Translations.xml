@@ -765,7 +765,7 @@
     <englishValue>word</englishValue>
     <frenchValue>mot</frenchValue>
   </term>
-   <term>
+  <term>
     <name>Word</name>
     <englishValue>Word</englishValue>
     <frenchValue>Mot</frenchValue>
@@ -780,9 +780,9 @@
     <englishValue>Check all</englishValue>
     <frenchValue>Sélectionne tout</frenchValue>
   </term>
-    <name>Check</name>
-    <englishValue>Check</englishValue>
-    <frenchValue>Vérifier</frenchValue>
+  <name>Check</name>
+  <englishValue>Check</englishValue>
+  <frenchValue>Vérifier</frenchValue>
   </term>
   <term>
     <name>GitBash binary path in Windows Path variable</name>
@@ -1409,7 +1409,7 @@
     <englishValue>XML Files</englishValue>
     <frenchValue>Fichiers XML</frenchValue>
   </term>
-   <term>
+  <term>
     <name>XML File</name>
     <englishValue>XML File</englishValue>
     <frenchValue>Fichier XML</frenchValue>

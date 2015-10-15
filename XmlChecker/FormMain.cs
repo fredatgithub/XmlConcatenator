@@ -37,8 +37,8 @@ namespace XmlChecker
       InitializeComponent();
     }
 
-    readonly Dictionary<string, string> _languageDicoEn = new Dictionary<string, string>();
-    readonly Dictionary<string, string> _languageDicoFr = new Dictionary<string, string>();
+    Dictionary<string, string> _languageDicoEn = new Dictionary<string, string>();
+    Dictionary<string, string> _languageDicoFr = new Dictionary<string, string>();
     private string _currentLanguage = "english";
 
     private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -82,7 +82,11 @@ namespace XmlChecker
 
       // read the translation file and feed the language
       XDocument xDoc = XDocument.Load(Settings.Default.LanguageFileName);
-      var toto = "";
+      if (xDoc == null)
+      {
+        MessageBox.Show("the document translations.xml cannot be loaded");
+      }
+      
       var result = from node in xDoc.Descendants("term")
                    where node.HasElements
                    let xElementName = node.Element("name")
