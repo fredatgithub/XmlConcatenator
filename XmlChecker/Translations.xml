@@ -196,11 +196,6 @@
     <frenchValue>rien</frenchValue>
   </term>
   <term>
-    <name>ToCut</name>
-    <englishValue>to cut</englishValue>
-    <frenchValue>à couper</frenchValue>
-  </term>
-  <term>
     <name>The source text cannot be empty</name>
     <englishValue>The source text cannot be empty</englishValue>
     <frenchValue>Le texte source ne peut pas être vide</frenchValue>
@@ -881,16 +876,6 @@
     <frenchValue>Création du script GitCloneBackup.bat</frenchValue>
   </term>
   <term>
-    <name>Create git clone backup script for gitted Visual Studio Solutions</name>
-    <englishValue>Create git clone backup script for gitted Visual Studio Solutions</englishValue>
-    <frenchValue>Création du script de backup pour faire un git clone pour les solutions Visual Studio avec Git</frenchValue>
-  </term>
-  <term>
-    <name>MenuLanguage</name>
-    <englishValue>Language</englishValue>
-    <frenchValue>Langue</frenchValue>
-  </term>
-  <term>
     <name>All</name>
     <englishValue>All</englishValue>
     <frenchValue>Tout</frenchValue>
@@ -1044,11 +1029,6 @@
     <name>NoText</name>
     <englishValue>no text</englishValue>
     <frenchValue>pas de texte</frenchValue>
-  </term>
-  <term>
-    <name>ToCut</name>
-    <englishValue>To cut</englishValue>
-    <frenchValue>à couper</frenchValue>
   </term>
   <term>
     <name>Nothing</name>
@@ -1271,11 +1251,6 @@
     <frenchValue>Le chemin de sauvegarde du fichier ne peut être vide</frenchValue>
   </term>
   <term>
-    <name>Empty field</name>
-    <englishValue>Empty field</englishValue>
-    <frenchValue>Champs vide</frenchValue>
-  </term>
-  <term>
     <name>There is nothing to copy</name>
     <englishValue>There is nothing to copy</englishValue>
     <frenchValue>Il n'y a rien à copier</frenchValue>
@@ -1449,5 +1424,10 @@
     <name>Last file processed</name>
     <englishValue>Last file processed</englishValue>
     <frenchValue>Dernier fichier traité</frenchValue>
+  </term>
+   <term>
+    <name>Number of quote</name>
+    <englishValue>Number of quote</englishValue>
+    <frenchValue>Nombre de citation</frenchValue>
   </term>
 </terms>

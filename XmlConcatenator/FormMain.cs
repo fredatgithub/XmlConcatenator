@@ -107,7 +107,7 @@ namespace XmlConcatenator
     {
       List<string> minimumVersion = new List<string>
       {
-        "<?xml version=\"1.0\" encoding=\"utf - 8\" ?>",
+        "<?xml version=\"1.0\" encoding=\"utf-8\" ?>",
         "<terms>",
          "<term>",
         "<name>MenuFile</name>",
